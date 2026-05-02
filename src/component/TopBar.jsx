@@ -1,56 +1,3 @@
-// import css from "../cssModule/Topbar.module.css";
-// import { FiSearch } from "react-icons/fi";
-// import { BsGrid1X2, BsLayoutSidebarInset } from "react-icons/bs";
-// import { useSharedState } from "../context/SidebarContext";
-// import { useSearchValue } from "../context/SearchingContext";
-// import { useGridChange } from "../context/BlogGridContex";
-
-// export default function TopBar () {
-
-//     const {toggle} = useSharedState();
-
-//     //search value context
-//     const {setSearhValue} = useSearchValue();
-
-//     //form submit reload control
-//     const fontHandler = (e) => {
-//         e.preventDefault();
-//     }
-
-//     //grid change 
-//     const { GridHandler } = useGridChange();
-
-//     return (
-//         <div className={css.Wraper}>
-//              <div className={css.container}>
-//             <div>
-//                 <BsLayoutSidebarInset 
-//                     onClick={toggle} 
-//                     className={`${css.icon} ${css.sidebar}`} 
-//                 />
-//             </div>
-//             {/* search  */}
-//             <form onSubmit={fontHandler} action="">
-//                 <input 
-//                     onChange={(e)=> setSearhValue(e.target.value)} 
-//                     type="text" 
-//                     placeholder="কাঙ্ক্ষিত ব্লগ খুঁজুন..." 
-//                     required
-//                 />
-//                 <FiSearch />
-//             </form>
-//             {/* Grid layout  */}
-//             <div>
-//                 <BsGrid1X2 
-//                     onClick={GridHandler} 
-//                     className={css.icon} 
-//                 />
-//             </div>
-//        </div>
-//         </div>
-//     )
-// }
-
 import css from "../cssModule/Topbar.module.css";
 import { FiSearch } from "react-icons/fi";
 import { BsLayoutSidebarInset, BsGrid1X2, BsList } from "react-icons/bs";
@@ -145,7 +92,7 @@ export default function TopBar() {
                 </Link>
               ) : (
                 <Link
-                  to="/login"
+                  to="/admin-login"
                   className={css.dropItem}
                   onClick={() => setDropOpen(false)}
                 >
