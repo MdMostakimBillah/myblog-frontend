@@ -42,21 +42,26 @@
     /* background-color: red; */
     padding: 10px 0;
     font-size: 18px;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    column-gap: 5px;
+    align-items: center;
 }
 .topicStyle span{
     border: 1px solid var(--border-color);
     border-radius: 60px;
     padding: 5px 15px;
     background-color: var(--white-color);
-    margin-right: 10px;
+    /* margin-right: 10px; */
 }
 .topic{
     border: 1px solid var(--border-color);
     border-radius: 60px;
     padding: 5px 15px;
     background-color: var(--white-color);
-    margin-right: 10px;
+    /* margin-right: 10px; */
 }
 .ResponceUser{
     margin: 80px 0;

@@ -72,36 +72,6 @@ export default function Managepost() {
     }
   };
 
-  // Filter Logic
-
-  //   const fetchPosts = async () => {
-  //   try {
-  //     setLoading(true);
-  //     const loggedInUsername = localStorage.getItem("username");
-
-  //     const res = await fetch(`${import.meta.env.VITE_API_URL}/api/my-posts/${loggedInUsername}`);
-
-  //     // কনসোলে চেক করুন রেসপন্স টাইপ কী
-  //     const contentType = res.headers.get("content-type");
-  //     if (!contentType || !contentType.includes("application/json")) {
-  //       const text = await res.text(); // JSON না হলে টেক্সট হিসেবে পড়ুন
-  //       console.error("সার্ভার থেকে JSON এর বদলে এটি এসেছে:", text);
-  //       throw new Error("সার্ভার থেকে সঠিক JSON ডাটা আসেনি।");
-  //     }
-
-  //     const data = await res.json();
-  //     if (data.success) {
-  //       setPosts(data.posts);
-  //       setFilteredPosts(data.posts);
-  //     }
-  //   } catch (err) {
-  //     setError(err.message);
-  //     console.error("Fetch error:", err);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
   useEffect(() => {
     let result = [...posts];
 
@@ -128,27 +98,7 @@ export default function Managepost() {
     setFilteredPosts(result);
   }, [selectedTopic, selectedStatus, searchValue, posts]);
 
-  // Delete Function
-  // const handleDelete = async (id) => {
-  //   if (!window.confirm("আপনি কি এই পোস্টটি ডিলিট করতে চান?")) return;
-
-  //   try {
-  //     const res = await fetch(`${import.meta.env.VITE_API_URL}/api/posts/${id}`, {
-  //       method: "DELETE",
-  //     });
-
-  //     const data = await res.json();
-
-  //     if (data.success) {
-  //       toast.success("পোস্ট সফলভাবে ডিলিট হয়েছে");
-  //       setPosts(prev => prev.filter(p => p._id !== id));
-  //     } else {
-  //       toast.error(data.message || "ডিলিট করতে সমস্যা হয়েছে");
-  //     }
-  //   } catch (err) {
-  //     toast.error("সার্ভারে সমস্যা হয়েছে");
-  //   }
-  // };
+ 
 
   const handleDelete = (id) => {
     toast(
@@ -271,15 +221,17 @@ export default function Managepost() {
           </select>
         </div>
 
-        <button
-          className={styleCss.resetBtn}
-          onClick={() => {
-            setSelectedTopic("all");
-            setSelectedStatus("all");
-          }}
-        >
-          ফিল্টার রিসেট
-        </button>
+        <div>
+          <button
+            className={styleCss.resetBtn}
+            onClick={() => {
+              setSelectedTopic("all");
+              setSelectedStatus("all");
+            }}
+          >
+            ফিল্টার রিসেট
+          </button>
+        </div>
       </div>
 
       {/* Table */}
@@ -307,8 +259,12 @@ export default function Managepost() {
           ) : (
             filteredPosts.map((post, index) => (
               <tr key={post._id} style={{ cursor: "pointer" }}>
-                <td>{(index+1).toString().replace(/\d/g, (c) => "০১২৩৪৫৬৭৮৯"[c])}</td>
-                <td className={styleCss.bannerShow}>
+                <td data-level="ক্রম">
+                  {(index + 1)
+                    .toString()
+                    .replace(/\d/g, (c) => "০১২৩৪৫৬৭৮৯"[c])}
+                </td>
+                <td data-level="ব্যানার" className={styleCss.bannerShow}>
                   {post.banner ? (
                     <img
                       src={post.banner}
@@ -319,7 +275,7 @@ export default function Managepost() {
                     <img src={banner} alt="default" />
                   )}
                 </td>
-                <td className={styleCss.topicStyle}>
+                <td data-level="টপিক" className={styleCss.topicStyle}>
                   {post.topic === "islamic"
                     ? "ইসলামি চিন্তা"
                     : post.topic === "quran-hadith"
@@ -332,18 +288,18 @@ export default function Managepost() {
                             ? "নতুন যা শিখছি"
                             : "কোন টপিক নেই!"}
                 </td>
-                <td>{formatDateToBanglaFull(post.date)}</td>
-                <td onClick={() => navigate(`/blog/${post._id}`)}>
+                <td data-level="তারিখ">{formatDateToBanglaFull(post.date)}</td>
+                <td data-level="টাইটেল" onClick={() => navigate(`/blog/${post._id}`)}>
                   {post.title || "শিরোনাম নেই"}
                 </td>
-                <td>
+                <td data-level="লাইক">
                   {post.likes
                     ? post.likes.length
                         .toString()
                         .replace(/\d/g, (c) => "০১২৩৪৫৬৭৮৯"[c])
                     : 0}
                 </td>
-                <td>
+                <td data-level="স্ট্যাটাস">
                   <span
                     style={{
                       color: post.status === "publish" ? "green" : "orange",
@@ -353,14 +309,15 @@ export default function Managepost() {
                     {post.status === "publish" ? "পাবলিশড" : "আনপাবলিশড"}
                   </span>
                 </td>
-                <td onClick={() => handleEdit(post)}>
+                <td data-level="এডিট" onClick={() => handleEdit(post)}>
                   <FaRegEdit style={{ cursor: "pointer", color: "#3182ce" }} />
                 </td>
-                <td onClick={() => handleDelete(post._id)}>
+                <td className={styleCss.deleteLasttd} data-level="ডিলিট" onClick={() => handleDelete(post._id)}>
                   <AiFillDelete
                     style={{ cursor: "pointer", color: "#ef4444" }}
                   />
                 </td>
+                <td className={styleCss.emptytd}></td>
               </tr>
             ))
           )}

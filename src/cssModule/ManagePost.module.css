@@ -5,6 +5,12 @@
     border-collapse: collapse;
     
 }
+@media (max-width: 800px) {
+    /* .tableParent{
+        display: flex;
+        flex-direction: column;
+    } */
+}
 .tableParent th{
     padding: 10px;
     background-color: var(--white-color);
@@ -30,20 +36,80 @@ tr:nth-child(even) {
 }
 .FilterArea{
     display: flex;
+    align-content: center !important;
+    gap: 7px;
+    width: 100%;
     margin-bottom: 10px;
 }
 .FilterArea select{
     margin-left: 0;
-    margin-right: 10px;
+    /* margin-right: 10px; */
+    /* margin-bottom: 7px; */
 }
+
+/* @media (max-width: 800px) {
+    .FilterArea{
+        flex-direction: column;
+    }
+} */
 .resetBtn{
-    padding: 8px 20px;
+    padding: 9px 20px;
     background-color: var(--white-color);
     font-size: 18px;
     border: 0.5px solid var(--border-color);
     color: var(--primary-color);
     border-radius: 4px;
     outline: none;
+    margin-bottom: 0;
+    /* margin-top: -4px; */
+}
+.emptytd{
+    display: none;
+}
+@media (max-width: 1150px) {
+    .resetBtn {
+        margin-top: 3px;
+    }
+
+    .FilterArea div button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 800px) {
+    .FilterArea{
+        flex-direction: column;
+        width: 100%;
+        gap: 2px;
+    }
+    thead{
+        display: none;
+    }
+    td{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: right !important;
+        padding: 10px 31px !important;
+        opacity: 0.8;
+        border-bottom: 0 !important;
+        
+    }
+    td::before{
+        content: attr(data-level);
+        float: left;
+        font-family: var(--Purno-Bold);
+    }
+    .deleteLasttd{
+        border-bottom: 1px solid var(--border-color) !important;
+    }
+    .emptytd{
+        display: block;
+        border: 0 !important;
+        /* margin-top: 10px; */
+        /* background-color: none !important; */
+        background-color: var(--body-bg-color) !important;
+    }
 }
 /*  {
     background: #000 !important;
@@ -81,12 +147,6 @@ tr:nth-child(even) {
     color: var(--primary-color);
     cursor: pointer;
 }
-/* style={{
-            padding: "7px 24px",
-            border: "1px solid #d1d5db",
-            borderRadius: "8px",
-            background: "#f9fafb",
-            color: "#374151",
-            cursor: "pointer",
-            fontSize: "15px"
-          }} */
+.bannerShow img{
+    margin-top: 5px;
+}
