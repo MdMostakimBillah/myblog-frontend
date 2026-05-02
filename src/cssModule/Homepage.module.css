@@ -1,0 +1,26 @@
+/* Grid  */
+/* .ParentWraper{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 13px;
+    justify-content: start;
+    transition: 0.3s ease-in;
+} */
+
+
+
+
+/* flex  */
+/* .ParentWraper{
+    display: flex !important;
+    flex-direction: column;
+} */
+
+/* .title{
+    display: flex;
+    margin-bottom: 10px;
+}
+.title svg{
+    font-size: 35px;
+    margin-right: 10px;
+} */

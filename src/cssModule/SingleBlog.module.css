@@ -1,0 +1,159 @@
+/* grid  */
+.loading{
+    width: 100%;
+    height: calc(100dvh - 110px);
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* color: var(--white-color); */
+}
+.loading p {
+    color: var(--primary-color);
+    font-size: 80px;
+    opacity: 0.2;
+    font-family: var(--Purno-Bold);
+    user-select: none;
+}
+.MasonryStyle .singleBlog{
+    border: 1px solid var(--border-color);
+    border-radius: 7px;
+    overflow: hidden;
+    background-color: var(--white-color);
+    display: flex;
+    flex-direction: column;
+    max-height: 800px;
+    cursor: pointer;
+}
+.bannerBlog{
+    height: 200px;
+}
+.bannerBlog img{
+    object-fit: cover;
+}
+.bannerBlog,
+.bannerBlog img{
+    width: 100%;
+    height: 100%;
+}
+
+.discriptionBox{
+    padding: 4px 10px;
+    position: relative;
+}
+
+.DateAndTopic{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+.DateAndTopic span{
+    font-size: 16px;
+    color: var(--gray-color);
+}
+.descriptionBlog .title{
+    font-size: 28px;
+    font-family: var(--Purno-Semibold);
+    margin-bottom: 7px;
+}
+.descriptionBlog p{
+    font-size: 18px;
+    text-align: justify;
+    margin-top: 3px;
+    margin-bottom: 7px;
+    color: var(--primary-color);
+}
+.MasonryStyle .discriptionBox .modify{
+    color: var(--primary-color);
+    border: 0.5px solid var(--border-color);
+    padding: 10px;
+    margin-top: -10px;
+    border-radius: 60px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    margin-top: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    background-color: var(--white-color);
+    transform: translate(50%, 100%);
+    transition: 0.3s cubic-bezier(.55,.09,.68,.53);
+}
+.MasonryStyle .singleBlog:hover .modify{
+    transform: translate(50%, -5%);
+}
+.MasonryStyle .modify svg{
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* flex  */
+.normalGrid{
+    border-radius: 7px;
+    overflow: hidden;
+    display: flex;
+    height: auto;
+    flex-direction: column;
+}
+.normalGrid .singleBlog{
+    border: 1px solid var(--border-color);
+    border-radius: 7px;
+    overflow: hidden;
+    background-color: var(--white-color);
+}
+.normalGrid .bannerBlog{
+    width: 300px !important;
+    margin-bottom: -5px;
+}
+.normalGrid .bannerBlog img{
+    width: 100%;
+    border-radius: 7px;
+}
+.normalGrid .singleBlog {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.normalGrid .discriptionBox{
+    width: 100%;
+    margin-left: 15px;
+}
+
+.normalGrid .discriptionBox{
+    position: relative;
+}
+.normalGrid .modify{
+    position: absolute; 
+    top: 0;
+    left: 50%;
+    color: var(--primary-color);
+    border: 0.5px solid var(--border-color);
+    padding: 10px;
+    border-radius: 60px;
+    transform: translate(-50%, -180%);
+    transition: 0.3s cubic-bezier(.55,.09,.68,.53);
+}
+.normalGrid .singleBlog:hover .modify {
+    transform: translate(-50%, -20%);
+}
+
+.normalGrid .modify svg {
+    margin-left: 12px;
+    margin-right: 12px;
+    margin-bottom: -4px;
+    margin-top: -2px;
+    cursor: pointer;
+    font-size: 18px;
+
+}
+.modify .edit:hover {
+    color: rgb(4, 196, 4);
+}
+.modify .delete:hover {
+    color: rgb(227, 5, 5);
+}

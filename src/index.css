@@ -1,0 +1,92 @@
+/* font include  */
+@font-face {
+  font-family: 'PurnoRegular';
+  src: url('./assets/font/BCC/InDesign/BCC\ Purno\ Regular.ttf');
+}
+@font-face {
+  font-family: 'PurnoSemibold';
+  src: url('./assets/font/BCC/InDesign/BCC\ Purno\ Semibold.ttf');
+}
+@font-face {
+  font-family: 'PurnoBold';
+  src: url('./assets/font/BCC/InDesign/BCC\ Purno\ Bold.ttf');
+}
+
+/* italic  */
+@font-face {
+  font-family: 'PurnoRegular-italik';
+  src: url('./assets/font/BCC/InDesign/BCC\ Purno\ Italic.ttf');
+}
+@font-face {
+  font-family: 'PurnoSemibold-italik';
+  src: url('./assets/font/BCC/InDesign/BCC\ Purno\ Semibold-Italic.ttf');
+}
+@font-face {
+  font-family: 'PurnoBold-italik';
+  src: url('./assets/font/BCC/InDesign/BCC\ Purno\ Bold-Italic.ttf');
+}
+
+:root{
+  --side-bar: 272px;
+  --max-width: 1280px;
+  --auto-width: 100dvw;
+  --regular-font: PurnoRegular;
+  --regular-font-italik: PurnoRegular-italik;
+  --Purno-Bold: PurnoBold;
+  --Purno-Bold-italik: PurnoBold-italik;
+  --Purno-Semibold: PurnoSemibold;
+  --Purno-Semibold-italik: PurnoSemibold-italik;
+  --primary-color: rgb(19, 19, 19);
+  --white-color: #ffffff;
+  --border-color: rgba(147, 147, 147, 0.365);
+  --body-bg-color: rgb(251, 255, 254);
+  --gray-color: gray;
+  --hover-color: rgb(229, 229, 229);
+  --hover-submenu-color: rgb(247, 247, 247);
+  --menu-active-color: rgb(215, 215, 215);
+}
+
+body.dark{
+  --side-bar: 272px;
+  --max-width: 1280px;
+  --auto-width: 100dvw;
+  --regular-font: PurnoRegular;
+  --regular-font-italik: PurnoRegular-italik;
+  --Purno-Bold: PurnoBold;
+  --Purno-Bold-italik: PurnoBold-italik;
+  --Purno-Semibold: PurnoSemibold;
+  --Purno-Semibold-italik: PurnoSemibold-italik;
+  --primary-color: #f0f0f0;
+  --white-color: #222222;
+  --border-color: #4b4b4be4;
+  --body-bg-color: #0c0c0c;
+  --gray-color: gray;
+  --hover-color: #2a2a2a;
+  --hover-submenu-color: #1b1b1b;
+  --menu-active-color: #313131;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--regular-font);
+  /* transition: 0.3s ease-in; */
+}
+h1, h2, h3, h4, h5, h6{
+  color: var(--primary-color);
+}
+p, a, span {
+  font-size: 16px;
+  color: var(--primary-color);
+}
+ul {
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+body{
+  background-color: var(--body-bg-color);
+}
+

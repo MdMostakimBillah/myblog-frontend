@@ -1,0 +1,510 @@
+.root {
+  /* min-height: 100vh; */
+  background: var(--body-bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* padding: 40px 16px; */
+  font-family: var(--regular-font), serif;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s;
+}
+
+.root::before {
+  content: '';
+  position: fixed;
+  top: -30%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--hover-color) 0%, transparent 70%);
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.root::after {
+  content: '';
+  position: fixed;
+  bottom: -20%;
+  left: -15%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, var(--hover-submenu-color) 0%, transparent 70%);
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* ─── Card ─── */
+.card {
+  width: 100%;
+  background: var(--white-color);
+  border: 0.5px solid var(--border-color);
+  border-radius: 7px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Top Header ─── */
+.top {
+  padding: 32px 40px 26px;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--white-color);
+}
+
+.brand {
+  font-family: var(--Purno-Bold), serif;
+  font-size: 40px;
+  color: var(--primary-color);
+  letter-spacing: -0.5px;
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brandDot {
+  width: 8px;
+  height: 8px;
+  background: var(--primary-color);
+  border-radius: 7px;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: var(--gray-color);
+  font-family: var(--regular-font), serif;
+}
+
+/* ─── Steps ─── */
+.steps {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-top: 22px;
+}
+.steps div{
+    
+}
+
+.stepDot {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 15px;
+  color: var(--gray-color);
+  font-family: var(--regular-font), serif;
+  font-weight: 500;
+  opacity: 0.5;
+  transition: all 0.3s;
+}
+
+.stepDot.active {
+  /* color: var(--primary-color); */
+  color: green;
+  opacity: 1;
+}
+
+.stepDot.done {
+  color: var(--primary-color);
+  /* color: green; */
+  opacity: 0.35;
+}
+
+.stepNum {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-family: var(--Purno-Bold), serif;
+  background: transparent;
+  transition: all 0.3s;
+  flex-shrink: 0;
+  color: var(--gray-color);
+}
+
+.stepDot.active .stepNum {
+  border-color: var(--primary-color);
+  /* background: var(--primary-color); */
+  background-color: green;
+  color: var(--white-color);
+}
+
+.stepDot.done .stepNum {
+  border-color: var(--border-color);
+  background: var(--hover-color);
+  color: var(--primary-color);
+}
+
+.stepLine {
+  flex: 1;
+  height: 1px;
+  background: var(--border-color);
+  margin: 0 8px;
+  transition: background 0.3s;
+}
+
+.stepLine.done {
+  background: var(--primary-color);
+  opacity: 0.2;
+}
+
+/* ─── Body ─── */
+.body {
+  padding: 30px 40px 34px;
+}
+
+.sectionTitle {
+  font-family: var(--Purno-Semibold), serif;
+  font-size: 18px;
+  color: var(--gray-color);
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.sectionTitle::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-color);
+}
+
+/* ─── Profile Pic ─── */
+.picUpload {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 26px;
+  padding: 16px;
+  border: 1px dashed var(--border-color);
+  border-radius: 12px;
+  background: var(--body-bg-color);
+  transition: border-color 0.2s;
+}
+
+.picUpload:hover {
+  border-color: var(--primary-color);
+  /* border-style: solid; */
+}
+
+.picCircle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 2px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
+  flex-shrink: 0;
+  background: var(--hover-color);
+}
+
+.picCircle:hover {
+  border-color: var(--primary-color);
+  transform: scale(1.04);
+}
+
+.picCircle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.picIcon {
+  font-size: 35px;
+  opacity: 0.25;
+}
+
+.picInfo p {
+  font-family: var(--regular-font), serif;
+  font-size: 15px;
+  color: var(--gray-color);
+  line-height: 1.6;
+}
+
+.picBtn {
+  display: inline-block;
+  margin-top: 7px;
+  font-size: 15px;
+  font-family: var(--Purno-Semibold), serif;
+  color: var(--primary-color);
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 4px 12px;
+  background: var(--white-color);
+  transition: all 0.2s;
+}
+
+.picBtn:hover {
+  background: var(--hover-color);
+  border-color: var(--primary-color);
+}
+
+/* ─── Grid ─── */
+.row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* ─── Field ─── */
+.field {
+  margin-bottom: 15px;
+}
+
+.field label {
+  display: block;
+  font-family: var(--Purno-Semibold), serif;
+  font-size: 18px;
+  color: var(--primary-color);
+  margin-bottom: 6px;
+  opacity: 0.7;
+}
+
+.field label span {
+  color: var(--primary-color);
+  margin-left: 2px;
+  opacity: 1;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  background: var(--body-bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 7px;
+  padding: 11px 14px;
+  font-size: 20px;
+  color: var(--primary-color);
+  font-family: var(--regular-font), serif;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.field select{
+  margin-left: -1px;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--gray-color);
+  opacity: 0.4;
+  font-family: var(--regular-font), serif;
+  font-size: 15px;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+  background: var(--white-color);
+}
+
+.field.error input,
+.field.error select,
+.field.error textarea {
+  border-color: #e05050;
+  box-shadow: 0 0 0 3px rgba(220, 50, 50, 0.06);
+}
+
+.errMsg {
+  font-size: 15px;
+  color: #e05050;
+  margin-top: 4px;
+  font-family: var(--regular-font), serif;
+}
+
+/* ─── Select arrow ─── */
+.field select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+.field select option {
+  background: var(--white-color);
+  color: var(--primary-color);
+}
+
+/* ─── Password ─── */
+.passWrap {
+  position: relative;
+}
+
+.passWrap input {
+  padding-right: 44px;
+}
+
+.passEye {
+  position: absolute;
+  right: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: var(--gray-color);
+  font-size: 18px;
+  user-select: none;
+  transition: color 0.2s, opacity 0.2s;
+  opacity: 0.5;
+  display: flex;
+  align-items: center;
+}
+
+.passEye:hover {
+  opacity: 1;
+  color: var(--primary-color);
+}
+
+/* ─── Textarea ─── */
+.field textarea {
+  resize: vertical;
+  min-height: 88px;
+  line-height: 1.6;
+}
+
+/* ─── Skills ─── */
+.skillsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 4px;
+}
+
+.skillTag {
+  padding: 6px 13px;
+  border-radius: 100px;
+  border: 1px solid var(--border-color);
+  font-size: 15px;
+  font-family: var(--regular-font), serif;
+  color: var(--gray-color);
+  cursor: pointer;
+  transition: all 0.18s;
+  background: var(--white-color);
+  user-select: none;
+}
+
+.skillTag:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background: var(--hover-color);
+}
+
+.skillTag.selected {
+  border-color: var(--primary-color);
+  color: var(--white-color);
+  background: var(--primary-color);
+}
+
+.skillCount {
+  font-size: 18px;
+  color: var(--gray-color);
+  margin-top: 9px;
+  font-family: var(--regular-font), serif;
+  opacity: 0.6;
+}
+
+/* ─── Buttons ─── */
+.btnRow {
+  display: flex;
+  gap: 11px;
+  margin-top: 26px;
+}
+
+.btnBack {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--gray-color);
+  font-size: 17px;
+  font-family: var(--regular-font), serif;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btnBack:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background: var(--hover-color);
+}
+
+.btnNext {
+  flex: 2;
+  padding: 12px;
+  border: 1.5px solid var(--primary-color);
+  border-radius: 10px;
+  background: var(--primary-color);
+  color: var(--white-color);
+  font-size: 17px;
+  font-family: var(--Purno-Semibold), serif;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.2px;
+}
+
+.btnNext:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.btnNext:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* ─── Login Link ─── */
+.loginLink {
+  text-align: center;
+  margin-top: 18px;
+  font-family: var(--regular-font), serif;
+  font-size: 16px;
+  color: var(--gray-color);
+}
+
+.loginLink a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-family: var(--Purno-Semibold), serif;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1px;
+  transition: border-color 0.2s;
+}
+
+.loginLink a:hover {
+  border-color: var(--primary-color);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 480px) {
+  .top, .body { padding-left: 22px; padding-right: 22px; }
+  .row2 { grid-template-columns: 1fr; }
+  .top { padding-top: 24px; }
+}

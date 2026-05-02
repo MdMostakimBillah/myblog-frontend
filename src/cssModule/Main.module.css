@@ -1,0 +1,35 @@
+.Wraper{
+    text-align: start;
+    width: calc(100% - 240px);
+    /* background-color: ; */
+    padding: 0 10px;
+    height: 100dvh;
+    overflow-y: scroll;
+    /* margin-left: 240px; */
+    transition: 0.3s ease-in;
+    scrollbar-width: none;
+    -webkit-scrollbar-width:none;
+    padding-bottom: 10px;
+}
+.fullWidth{
+    width: 100% !important;
+    margin-left: 0 !important;
+}
+
+/* fullWidth */
+
+@media (max-width: 850px) {
+    .Wraper{
+        text-align: start;
+        width: 100%;
+        /* background-color: ; */
+        padding: 0 10px;
+        height: 100dvh;
+        overflow-y: scroll;
+        /* margin-left: 240px; */
+        transition: 0.3s ease-in;
+        scrollbar-width: none;
+        -webkit-scrollbar-width:none;
+        padding-bottom: 10px;
+    }
+}

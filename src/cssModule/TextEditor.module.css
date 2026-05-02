@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
+
+.controlGroup{
+    width: 100%;
+    margin-top: 15px;
+    /* display: flex; */
+}
+.buttonGroup{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.buttonGroup button {
+    width: 40px;
+    height: 40px;
+    padding: 5px 10px;
+    margin-right: 5px;
+    font-size: 18px;
+    background-color: var(--hover-color);
+    border: 0.5px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--primary-color);
+}
+.buttonGroup button svg{
+    margin-top: 5px;
+}
+.Wraper{
+    margin-top: 10px;
+}
+.textArea{
+    background-color: var(--hover-color);
+    /* border: 0.5px solid var(--border-color); */
+    padding: 10px 20px;
+    min-height: 300px;
+    border-radius: 7px;
+    outline: none;
+    font-size: 20px ;
+    color: var(--primary-color);
+    /* width: 733px; */
+    min-width: 100% !important;
+    margin: 10px ;
+    line-height: 1.7rem;
+    margin-top: 7px;
+    /* border: 0.5px solid var(--border-color); */
+}
+.textArea p,
+.textArea a,
+.textArea code,
+.textArea li,
+.textArea ul {
+    font-size: 20px;
+    line-height: 1.7rem;
+}
+.bulletList{
+    margin-left: 15px;
+    list-style:disc !important;
+}
+.listItem{
+    margin-left: 15px;
+}
+.codeBlockArea{
+    background-color: var(--hover-color);
+    padding: 7px;
+    border-radius: 4px;
+}
+.codeBlockArea code {
+    font-family: "Fira Code", monospace !important;
+}
+.editorImage{
+    width: 100%;
+    height: auto;
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+ .textArea img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 7px;
+}
+
+.ProseMirror-selectednode {
+  outline: 2px solid #4f46e5;
+}
+
+.bubbleMenu button{
+    width: 40px;
+    height: 40px;
+    padding: 5px 10px;
+    margin-right: 5px;
+    font-size: 18px;
+    background-color: var(--hover-color);
+    border: 0.5px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--primary-color);
+}
+
+.bubbleMenu button svg{
+    margin-top: 5px;
+}
+.link {
+  color: rgb(20, 3, 211);
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+@media (max-width: 950px) {
+    .textArea{
+        margin: 4px -6px 0px -5px;
+    }
+       
+}

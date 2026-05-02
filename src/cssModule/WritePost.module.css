@@ -1,0 +1,150 @@
+.Wraper{
+    border-radius: 7px;
+    padding: 10px 20px;
+    background-color: var(--white-color);
+    border: 0.5px solid var(--border-color); 
+}
+.contantWraper{
+    width: 770px;
+    margin: 0 auto;
+}
+.leftSide{
+    min-width: 100%;
+    margin-bottom: 0;
+}
+
+.leftSide div.topBlog{
+    display: flex;
+    font-size: 17px;
+    color: var(--primary-color);
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+}
+.titleCardElement input, 
+.titleCardElement textarea,
+.leftSide div input, select {
+    padding: 8px 20px;
+    background-color: var(--white-color);
+    font-size: 18px;
+    border: 0.5px solid var(--border-color);
+    color: var(--primary-color);
+    border-radius: 4px;
+    outline: none;
+    margin: 0 10px;
+    /* min-width: 100%; */
+}
+
+.leftSide div input[type="submit"]{
+    cursor: pointer;
+}
+.titleCardElement{
+    min-width: 100%;
+    margin: 0 auto;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+
+}
+.titleCardElement input, 
+.titleCardElement textarea{
+    margin-top: 7px;
+    line-height: 1.7rem;
+    min-width: 100% !important;
+}
+.bannerInputArea{
+    padding: 8px 20px;
+    background-color: var(--hover-color);
+    border: 0.5px dashed var(--border-color);
+    color: var(--primary-color);
+    border-radius: 4px;
+    margin: 0 10px;
+    margin-top: 10px;
+    min-height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+}
+.fillImage{
+    border: 0.5px dashed transparent !important;
+    padding: 0;
+}
+.TellImageSize{
+    font-size: 150px;
+    color: var(--white);
+    opacity: 10%;
+}
+.bannerImage{
+    width: 100%;
+    height: auto;
+}
+.isInputValueAdd{
+    background-color: var(--hover-color) !important;
+    border: 0.5px dashed transparent !important;
+    font-size: 35px !important;
+    font-family: var(--Purno-Bold) !important;
+}
+.isInputValueAddParagraph{
+    border: 0.5px dashed transparent !important;
+    font-size: 20px !important;
+    text-align: justify;
+    height: auto;
+    background-color: var(--hover-color) !important;
+}
+.editAreaEditor div{
+    width: 97.5% !important;
+    margin-left: 10px ;
+    margin-top: 7px;
+}
+
+
+@media (max-width: 1150px) {
+    .Wraper,
+    .contantWraper{
+       max-width: 100% !important; 
+    }
+
+    .leftSide div.topBlog{
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .leftSide div input, select {
+        width: 100%;
+        margin: 3px;
+    }
+    .titleCardElement{
+        width: 100% !important;
+    }
+    .titleCardElement input,
+    .titleCardElement textarea{
+        width: 100% !important;
+        margin: 3px 5px !important;
+    }
+    .bannerInputArea{
+        max-width: 100%;
+    }
+    .titleCardElement {
+        max-width: 95%;
+        flex-wrap: wrap;
+        padding: 0 9px 0px 0px !important;
+    }
+    .titleCardElement input, 
+    .titleCardElement textarea{
+        margin-top: 0;
+        line-height: 1.7rem;
+    }
+    .bannerInputArea{
+        margin: 5px;
+        margin-right:10px;
+    }
+    .editAreaEditor div{
+        width: 98% !important;
+        margin-left:3px ;
+    }
+
+}

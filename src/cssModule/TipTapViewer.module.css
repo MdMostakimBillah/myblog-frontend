@@ -1,0 +1,65 @@
+.tiptapViewer :global(p){
+    font-size: 20px;
+    line-height: 1.7rem;
+}
+/* Paragraph alignment */
+.tiptapViewer :global(p[style*="text-align: justify"]) {
+  text-align: justify;
+}
+
+.tiptapViewer :global(p[style*="text-align: center"]) {
+  text-align: center;
+}
+
+.tiptapViewer :global(p[style*="text-align: left"]) {
+  text-align: left;
+}
+
+.tiptapViewer :global(p[style*="text-align: right"]) {
+  text-align: right;
+}
+/* ul li::marker{
+  color: var(--white-color) !important;
+} */
+
+/* Headings */
+.tiptapViewer :global(h1) { 
+  font-size: 29px; 
+  margin: 2.5rem 0 1rem; 
+  font-weight: 800;
+}
+
+.tiptapViewer :global(h2) { 
+  font-size: 27px; 
+  font-weight: 700;
+}
+
+.tiptapViewer :global(h3){
+    font-size: 25px; 
+    font-weight: 600;
+}
+/* Bold, Italic */
+.tiptapViewer :global(strong) { font-weight: 700; }
+.tiptapViewer :global(em) { font-style: italic; }
+
+/* Image */
+.tiptapViewer :global(img) {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin: 25px 0;
+}
+
+/* List */
+
+.tiptapViewer :global(ul){
+  list-style: disc;
+}
+.tiptapViewer :global(li::marker){
+  color: var(--primary-color);
+  /* margin-bottom: 5px; */
+}
+.tiptapViewer :global(ul), .tiptapViewer :global(ol) {
+  padding-left: 28px;
+  margin: 1.2rem 0;
+}
