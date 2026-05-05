@@ -256,8 +256,10 @@ export default function UserPosts() {
           >
             {posts.map((post, idx) => {
               const liked = post.likes?.includes(loggedInUserId);
+               
               return (
-                <div
+                post.status == "publish" ?
+                (<div
                   key={post._id}
                   style={{
                     display: "grid",
@@ -428,7 +430,7 @@ export default function UserPosts() {
                       />
                     </Link>
                   )}
-                </div>
+                </div>) : ""
               );
             })}
           </div>

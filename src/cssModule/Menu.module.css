@@ -13,6 +13,7 @@
     margin-left: 5px;
     opacity: 1;
     visibility: visible;
+    scrollbar-width: none !important;
 }
 .hideAside{
     margin-left: -240px;
