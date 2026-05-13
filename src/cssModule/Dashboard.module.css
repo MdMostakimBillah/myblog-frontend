@@ -1,0 +1,516 @@
+/* ══════════════════════════════════════
+   Dashboard Page — CSS Module
+   uses: --primary-color, --white-color,
+         --body-bg-color, --border-color,
+         --hover-color, --hover-submenu-color,
+         --gray-color, --regular-font,
+         --Purno-Bold, --Purno-Semibold
+══════════════════════════════════════ */
+
+.page {
+  min-height: 100vh;
+  background: var(--body-bg-color);
+  font-family: var(--regular-font), serif;
+  color: var(--primary-color);
+  padding: 28px 28px 60px;
+}
+
+/* ── Loading ── */
+.loading {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ══════════════════════════════════════
+   Page Header
+══════════════════════════════════════ */
+.header {
+  margin-bottom: 28px;
+  animation: fadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.greeting {
+  font-family: var(--Purno-Bold), serif;
+  font-size: clamp(22px, 3vw, 30px);
+  letter-spacing: -0.5px;
+  color: var(--primary-color);
+  margin-bottom: 4px;
+}
+
+.subGreeting {
+  font-size: 14px;
+  color: var(--gray-color);
+  opacity: 0.55;
+}
+
+/* ══════════════════════════════════════
+   Stats Grid
+══════════════════════════════════════ */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 24px;
+  animation: fadeUp 0.5s 0.05s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.statCard {
+  background: var(--white-color);
+  border: 1px solid var(--border-color);
+  border-radius: 13px;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: default;
+}
+.statCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.statTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.statIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  background: var(--hover-color);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.statBadge {
+  font-family: var(--Purno-Semibold), serif;
+  font-size: 10px;
+  letter-spacing: 0.8px;
+  padding: 3px 8px;
+  border-radius: 100px;
+  background: var(--hover-submenu-color);
+  border: 1px solid var(--border-color);
+  color: var(--gray-color);
+}
+
+.statNum {
+  font-family: var(--Purno-Bold), serif;
+  font-size: 30px;
+  line-height: 1;
+  color: var(--primary-color);
+  letter-spacing: -1px;
+}
+
+.statLabel {
+  font-size: 13px;
+  color: var(--gray-color);
+  opacity: 0.6;
+}
+
+.statBar {
+  height: 2px;
+  background: var(--border-color);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.statBarFill {
+  height: 100%;
+  background: var(--primary-color);
+  border-radius: 100px;
+  animation: barGrow 1s 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  transform-origin: left;
+}
+
+@keyframes barGrow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* ══════════════════════════════════════
+   Main body — 2 column
+══════════════════════════════════════ */
+.body {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 20px;
+  align-items: start;
+}
+
+/* ══════════════════════════════════════
+   Section
+══════════════════════════════════════ */
+.section {
+  margin-bottom: 20px;
+  animation: fadeUp 0.5s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.sectionHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.sectionTitle {
+  font-family: var(--Purno-Semibold), serif;
+  font-size: 11px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--gray-color);
+  opacity: 0.55;
+}
+
+.sectionLink {
+  font-family: var(--Purno-Semibold), serif;
+  font-size: 12px;
+  color: var(--gray-color);
+  opacity: 0.5;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+.sectionLink:hover { opacity: 1; color: var(--primary-color); }
+
+/* ══════════════════════════════════════
+   Post List
+══════════════════════════════════════ */
+.postList {
+  background: var(--white-color);
+  border: 1px solid var(--border-color);
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.postItem {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color);
+  transition: background 0.15s;
+  text-decoration: none;
+  color: inherit;
+}
+.postItem:last-child { border-bottom: none; }
+.postItem:hover { background: var(--hover-submenu-color); }
+
+.postInfo { display: flex; flex-direction: column; gap: 5px; }
+
+.postTitle {
+  font-family: var(--Purno-Semibold), serif;
+  font-size: 15px;
+  color: var(--primary-color);
+  line-height: 1.4;
+}
+
+.postMeta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.postTopic {
+  display: inline-flex;
+  padding: 2px 9px;
+  background: var(--hover-color);
+  border: 1px solid var(--border-color);
+  border-radius: 100px;
+  font-size: 11px;
+  color: var(--gray-color);
+  font-family: var(--Purno-Semibold), serif;
+}
+
+.postDate {
+  font-size: 12px;
+  color: var(--gray-color);
+  opacity: 0.5;
+}
+
+.postRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.postLikes {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--Purno-Semibold), serif;
+  font-size: 13px;
+  color: var(--gray-color);
+  opacity: 0.6;
+}
+
+.postStatus {
+  padding: 3px 9px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-family: var(--Purno-Semibold), serif;
+  border: 1px solid var(--border-color);
+}
+.statusPublish {
+  background: #f0fdf4;
+  color: #16a34a;
+  border-color: #bbf7d0;
+}
+.statusUnpublish {
+  background: var(--hover-color);
+  color: var(--gray-color);
+}
+
+.emptyState {
+  padding: 48px 20px;
+  text-align: center;
+  color: var(--gray-color);
+  opacity: 0.4;
+  font-size: 14px;
+}
+
+/* ══════════════════════════════════════
+   Right Column
+══════════════════════════════════════ */
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: fadeUp 0.5s 0.15s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Card ── */
+.card {
+  background: var(--white-color);
+  border: 1px solid var(--border-color);
+  border-radius: 13px;
+  padding: 18px 20px;
+}
+
+.cardTitle {
+  font-family: var(--Purno-Semibold), serif;
+  font-size: 11px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--gray-color);
+  opacity: 0.5;
+  margin-bottom: 14px;
+}
+
+/* ── Profile card ── */
+.profileCard {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  background: var(--white-color);
+  border: 1px solid var(--border-color);
+  border-radius: 13px;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.15s;
+}
+.profileCard:hover { background: var(--hover-submenu-color); }
+
+.profilePic {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 1px solid var(--border-color);
+  background: var(--hover-color);
+  flex-shrink: 0;
+}
+
+.profileAvatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--hover-color);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--Purno-Bold), serif;
+  font-size: 20px;
+  color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.profileName {
+  font-family: var(--Purno-Bold), serif;
+  font-size: 16px;
+  color: var(--primary-color);
+  margin-bottom: 2px;
+}
+
+.profileUsername {
+  font-size: 12px;
+  color: var(--gray-color);
+  opacity: 0.5;
+}
+
+.profileArrow {
+  margin-left: auto;
+  font-size: 14px;
+  color: var(--gray-color);
+  opacity: 0.3;
+}
+
+/* ── Topic breakdown ── */
+.topicList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.topicRow {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.topicMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topicName {
+  font-family: var(--Purno-Semibold), serif;
+  font-size: 13px;
+  color: var(--primary-color);
+}
+
+.topicCount {
+  font-family: var(--Purno-Semibold), serif;
+  font-size: 12px;
+  color: var(--gray-color);
+  opacity: 0.5;
+}
+
+.topicBar {
+  height: 3px;
+  background: var(--border-color);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.topicFill {
+  height: 100%;
+  background: var(--primary-color);
+  border-radius: 100px;
+  animation: barGrow 1s 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  transform-origin: left;
+}
+
+/* ── Quick actions ── */
+.actionList {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.actionBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 13px;
+  border: 1px solid var(--border-color);
+  border-radius: 9px;
+  background: var(--body-bg-color);
+  color: var(--primary-color);
+  font-family: var(--Purno-Semibold), serif;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s;
+  width: 100%;
+  text-align: left;
+}
+.actionBtn:hover {
+  background: var(--hover-color);
+  border-color: var(--primary-color);
+  transform: translateX(3px);
+}
+
+.actionIcon {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  background: var(--white-color);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.actionArrow {
+  margin-left: auto;
+  opacity: 0.28;
+  font-size: 13px;
+}
+
+/* ── Most liked post ── */
+.topPost {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.topPostTitle {
+  font-family: var(--Purno-Semibold), serif;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--primary-color);
+}
+
+.topPostMeta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.topPostLikes {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--Purno-Semibold), serif;
+  font-size: 13px;
+  color: #e05050;
+}
+
+/* ══════════════════════════════════════
+   Animations
+══════════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ══════════════════════════════════════
+   Responsive
+══════════════════════════════════════ */
+@media (max-width: 900px) {
+  .statsGrid { grid-template-columns: repeat(2, 1fr); }
+  .body      { grid-template-columns: 1fr; }
+  .right     { order: -1; }
+}
+
+@media (max-width: 500px) {
+  .page      { padding: 18px 14px 50px; }
+  .statsGrid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+}
