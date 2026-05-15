@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 .wraper{
     background: var(--white-color);
     padding: 10px;
@@ -117,5 +118,18 @@
 
 .likeSection span, .copySection span {
     font-size: 18px;
+    font-weight: 500;
+}
+
+code{
+    color: var(--primary-color);
+    font-family: 'Fira Code', monospace;
+    background-color: var(--hover-color);
+    width: 100%;
+    display: block;
+    padding: 15px;
+    border-radius: 7px;
+    opacity: 80%;
+    font-size: 17px;
     font-weight: 500;
 }

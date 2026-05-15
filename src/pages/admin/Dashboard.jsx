@@ -23,31 +23,23 @@ import {
 } from "react-icons/ri";
 
 // ── helpers ──────────────────────────────────────
-const toBn = (n) => (n ?? 0).toString().replace(/\d/g, (c) => "০১২৩৪৫৬৭৮৯"[c]);
+const toBn = (n) =>
+  (n ?? 0).toString().replace(/\d/g, (c) => "০১২৩৪৫৬৭৮৯"[c]);
 
 const TOPIC_LABEL = {
-  islamic: "ইসলামি চিন্তা",
-  "quran-hadith": "কুরআন ও হাদিস",
-  self: "আত্মশুদ্ধি",
-  creative: "সৃজনশীল লেখা",
-  learning: "নতুন যা শিখছি",
+  islamic:       "ইসলামি চিন্তা",
+  "quran-hadith":"কুরআন ও হাদিস",
+  self:          "আত্মশুদ্ধি",
+  creative:      "সৃজনশীল লেখা",
+  learning:      "নতুন যা শিখছি",
 };
 
 const toBanglaDate = (iso) => {
   if (!iso) return "";
   const months = [
-    "জানু",
-    "ফেব্রু",
-    "মার্চ",
-    "এপ্রিল",
-    "মে",
-    "জুন",
-    "জুলাই",
-    "আগস্ট",
-    "সেপ্ট",
-    "অক্টো",
-    "নভে",
-    "ডিসে",
+    "জানু","ফেব্রু","মার্চ","এপ্রিল",
+    "মে","জুন","জুলাই","আগস্ট",
+    "সেপ্ট","অক্টো","নভে","ডিসে",
   ];
   const d = new Date(iso);
   return `${toBn(d.getDate())} ${months[d.getMonth()]}`;
@@ -66,48 +58,42 @@ export default function Dashboard() {
   const { isLogin } = useLoginAuth();
 
   const username = localStorage.getItem("username");
-  const userId = localStorage.getItem("userId");
+  const userId   = localStorage.getItem("userId");
 
-  const [user, setUser] = useState(null);
-  const [posts, setPosts] = useState([]);
+  const [user,    setUser]    = useState(null);
+  const [posts,   setPosts]   = useState([]);
   const [loading, setLoading] = useState(true);
 
   // ── Fetch user + posts ──
   useEffect(() => {
-    if (!username) {
-      setLoading(false);
-      return;
-    }
+    if (!username) { setLoading(false); return; }
     setLoading(true);
 
     Promise.all([
-      fetch(
-        `${import.meta.env.VITE_API_URL}/api/auth/user-profile/${username}`,
-      ).then((r) => r.json()),
-      fetch(`${import.meta.env.VITE_API_URL}/api/my-posts/${username}`).then(
-        (r) => r.json(),
-      ),
+      fetch(`${import.meta.env.VITE_API_URL}/api/auth/user-profile/${username}`)
+        .then(r => r.json()),
+      fetch(`${import.meta.env.VITE_API_URL}/api/my-posts/${username}`)
+        .then(r => r.json()),
     ])
       .then(([profileData, postsData]) => {
         if (profileData.success) setUser(profileData.user);
-        if (postsData.success) setPosts(postsData.posts || []);
+        if (postsData.success)   setPosts(postsData.posts || []);
       })
       .catch(() => {})
       .finally(() => setLoading(false));
   }, [username]);
 
-  if (loading)
-    return (
-      <div className={css.loading}>
-        <ScaleLoader color="var(--primary-color)" />
-      </div>
-    );
+  if (loading) return (
+    <div className={css.loading}>
+      <ScaleLoader color="var(--primary-color)" />
+    </div>
+  );
 
   // ── Derived stats ──
-  const totalPosts = posts.length;
-  const publishedPosts = posts.filter((p) => p.status === "publish").length;
-  const draftPosts = posts.filter((p) => p.status !== "publish").length;
-  const totalLikes = posts.reduce((sum, p) => sum + (p.likes?.length || 0), 0);
+  const totalPosts     = posts.length;
+  const publishedPosts = posts.filter(p => p.status === "publish").length;
+  const draftPosts     = posts.filter(p => p.status !== "publish").length;
+  const totalLikes     = posts.reduce((sum, p) => sum + (p.likes?.length || 0), 0);
 
   // topic breakdown
   const topicMap = posts.reduce((acc, p) => {
@@ -120,47 +106,19 @@ export default function Dashboard() {
 
   // most liked post
   const topPost = [...posts].sort(
-    (a, b) => (b.likes?.length || 0) - (a.likes?.length || 0),
+    (a, b) => (b.likes?.length || 0) - (a.likes?.length || 0)
   )[0];
 
   // recent 5 posts
   const recentPosts = [...posts]
     .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-    .slice(0, 8);
+    .slice(0, 5);
 
   const STATS = [
-    {
-      icon: <RiQuillPenLine />,
-      label: "মোট লেখা",
-      num: toBn(totalPosts),
-      pct: 100,
-      badge: "সব",
-      cls: css.cardBlue,
-    },
-    {
-      icon: <RiCheckboxCircleLine />,
-      label: "প্রকাশিত",
-      num: toBn(publishedPosts),
-      pct: totalPosts ? (publishedPosts / totalPosts) * 100 : 0,
-      badge: "লাইভ",
-      cls: css.cardGreen,
-    },
-    {
-      icon: <RiFolderLine />,
-      label: "আনপাবলিশ",
-      num: toBn(draftPosts),
-      pct: totalPosts ? (draftPosts / totalPosts) * 100 : 0,
-      badge: "ড্রাফট",
-      cls: css.cardAmber,
-    },
-    {
-      icon: <RiHeartLine />,
-      label: "মোট লাইক",
-      num: toBn(totalLikes),
-      pct: Math.min((totalLikes / Math.max(totalPosts * 2, 1)) * 100, 100),
-      badge: "রিঅ্যাক্ট",
-      cls: css.cardRose,
-    },
+    { icon: <RiQuillPenLine />,        label: "মোট লেখা",  num: toBn(totalPosts),     pct: 100,                                                              badge: "সব",       cls: css.cardBlue  },
+    { icon: <RiCheckboxCircleLine />,  label: "প্রকাশিত",  num: toBn(publishedPosts), pct: totalPosts ? (publishedPosts / totalPosts) * 100 : 0,             badge: "লাইভ",     cls: css.cardGreen },
+    { icon: <RiFolderLine />,          label: "আনপাবলিশ", num: toBn(draftPosts),     pct: totalPosts ? (draftPosts / totalPosts) * 100 : 0,                 badge: "ড্রাফট",   cls: css.cardAmber },
+    { icon: <RiHeartLine />,           label: "মোট লাইক", num: toBn(totalLikes),     pct: Math.min((totalLikes / Math.max(totalPosts * 2, 1)) * 100, 100),  badge: "রিঅ্যাক্ট", cls: css.cardRose  },
   ];
 
   return (
@@ -211,6 +169,51 @@ export default function Dashboard() {
                 সব দেখুন <RiArrowRightLine />
               </Link>
             </div>
+
+            {/* <div className={css.postList}>
+              {recentPosts.length === 0 ? (
+                <div className={css.emptyState}>
+                  <RiBookOpenLine className={css.emptyIcon} />
+                  <p>এখনো কোনো লেখা নেই</p>
+                  <Link to="/writepost" className={css.emptyLink}>প্রথম লেখাটি লিখুন →</Link>
+                </div>
+              ) : (
+                recentPosts.map((post, idx) => (
+                  <Link key={post._id} to={`/post/${post._id}`}
+                    className={css.postItem}
+                    style={{ animationDelay: `${0.15 + idx * 0.06}s` }}>
+
+                    <span className={css.postIndex}>{toBn(idx + 1)}</span>
+
+                    <div className={css.postInfo}>
+                      <p className={css.postTitle}>{post.title}</p>
+                      <div className={css.postMeta}>
+                        {post.topic && (
+                          <span className={css.postTopic}>
+                            {TOPIC_LABEL[post.topic] || post.topic}
+                          </span>
+                        )}
+                        <span className={css.postDate}>
+                          <RiCalendarLine />
+                          {toBanglaDate(post.createdAt)}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className={css.postRight}>
+                      <span className={css.postLikes}>
+                        <RiHeartLine /> {toBn(post.likes?.length || 0)}
+                      </span>
+                      <span className={`${css.postStatus} ${
+                        post.status === "publish" ? css.statusPublish : css.statusUnpublish
+                      }`}>
+                        {post.status === "publish" ? "লাইভ" : "ড্রাফট"}
+                      </span>
+                    </div>
+                  </Link>
+                ))
+              )}
+            </div> */}
 
             <div className={css.postList}>
               {recentPosts.length === 0 ? (
@@ -281,6 +284,7 @@ export default function Dashboard() {
                 ))
               )}
             </div>
+
           </div>
         </div>
 

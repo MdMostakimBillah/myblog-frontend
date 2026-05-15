@@ -180,12 +180,13 @@
 .sectionLink:hover { opacity: 1; color: var(--primary-color); }
 
 /* ══════════════════════════════════════
-   Post List
+   Post List — redesigned
 ══════════════════════════════════════ */
 .postList {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  /* background-color: red !important; */
 }
 
 .postItem {
