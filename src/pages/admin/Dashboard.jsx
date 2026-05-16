@@ -112,7 +112,7 @@ export default function Dashboard() {
   // recent 5 posts
   const recentPosts = [...posts]
     .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-    .slice(0, 5);
+    .slice(0, 10);
 
   const STATS = [
     { icon: <RiQuillPenLine />,        label: "মোট লেখা",  num: toBn(totalPosts),     pct: 100,                                                              badge: "সব",       cls: css.cardBlue  },

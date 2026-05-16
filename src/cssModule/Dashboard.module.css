@@ -556,7 +556,6 @@
   from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0);    }
 }
-
 /* ══════════════════════════════════════
    Responsive
 ══════════════════════════════════════ */
@@ -566,25 +565,79 @@
   .right     { order: -1; }
 }
 
-@media (max-width: 500px) {
-  .page      { padding: 18px 14px 50px; }
-  .statsGrid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+@media (max-width: 800px) {
+  /* post item hover effect বন্ধ — mobile এ layout ভাঙে */
+  .postItem:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .postItem {
+    padding: 12px 14px;
+    gap: 12px;
+  }
+
+  .postThumb  { width: 52px; height: 52px; }
+  .postArrow  { display: none; }
+  .postRight  { gap: 5px; }
 }
 
-/* ══════════════════════════════════════
-   Stat card color variants
-══════════════════════════════════════ */
-.cardBlue  .statIcon { background: #eff6ff; border-color: #bfdbfe; color: #3b82f6; }
-.cardBlue  .statBarFill { background: #3b82f6; }
+@media (max-width: 600px) {
+  .page         { padding: 14px 12px 50px; }
+  .statsGrid    { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .statCard     { padding: 14px; }
+  .statNum      { font-size: 24px; }
 
-.cardGreen .statIcon { background: #f0fdf4; border-color: #bbf7d0; color: #16a34a; }
-.cardGreen .statBarFill { background: #16a34a; }
+  .headerInner  { flex-direction: column; align-items: flex-start; }
+  .newPostBtn   { width: 100%; justify-content: center; }
 
-.cardAmber .statIcon { background: #fffbeb; border-color: #fde68a; color: #d97706; }
-.cardAmber .statBarFill { background: #d97706; }
+  .postItem     { padding: 11px 12px; gap: 10px; }
+  .postThumb    { width: 46px; height: 46px; }
+  .postTitle    { font-size: 13px; }
+  .postTopic    { font-size: 10px; padding: 1px 7px; }
+  .postDate     { font-size: 11px; }
 
-.cardRose  .statIcon { background: #fff1f2; border-color: #fecdd3; color: #e11d48; }
-.cardRose  .statBarFill { background: #e11d48; }
+  /* right section এ শুধু like দেখাবে */
+  .postRight    { flex-direction: row; align-items: center; gap: 8px; }
+
+  .actionBtn    { font-size: 13px; padding: 9px 11px; }
+  .card         { padding: 14px; }
+  .profileCard  { padding: 14px; }
+  .profileName  { font-size: 14px; }
+  .topicName    { font-size: 12px; }
+  .topicCount   { font-size: 11px; }
+}
+
+@media (max-width: 480px) {
+  .postTitle  {
+    font-size: 13px;
+    /* দুই লাইন দেখাবে, একলাইন ellipsis এর বদলে */
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .postThumb  { width: 42px; height: 42px; }
+  .postTopic  { display: none; }
+  .postIndex  { display: none; }
+
+  /* stats এ badge লুকানো */
+  .statBadge  { display: none; }
+  .statCard   { padding: 12px; }
+  .statNum    { font-size: 22px; }
+}
+
+@media (max-width: 380px) {
+  .page       { padding: 10px 10px 50px; }
+  .statsGrid  { gap: 8px; }
+  .statNum    { font-size: 20px; }
+  .postThumb  { width: 38px; height: 38px; }
+  .postDate   { display: none; }
+}
+/* ── Left column ── */
+.left { min-width: 0; }
 
 /* ── Section title wrap ── */
 .sectionTitleWrap {
@@ -610,63 +663,7 @@
 }
 .sectionLink:hover { opacity: 1; color: var(--primary-color); }
 
-/* ── Post index number ── */
-.postIndex {
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
-  background: var(--hover-color);
-  border: 1px solid var(--border-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--Purno-Semibold), serif;
-  font-size: 11px;
-  color: var(--gray-color);
-  flex-shrink: 0;
-}
-
-/* ── Post date icon ── */
-.postDate {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 12px;
-  color: var(--gray-color);
-  opacity: 0.5;
-}
-.postDate svg { font-size: 12px; }
-
-/* ── Post likes icon ── */
-.postLikes {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-family: var(--Purno-Semibold), serif;
-  font-size: 13px;
-  color: var(--gray-color);
-  opacity: 0.6;
-}
-.postLikes svg { font-size: 13px; }
-
-/* ── Empty state ── */
-.emptyIcon {
-  font-size: 32px;
-  opacity: 0.3;
-  margin-bottom: 8px;
-}
-.emptyLink {
-  font-family: var(--Purno-Semibold), serif;
-  font-size: 13px;
-  color: var(--primary-color);
-  opacity: 0.6;
-  text-decoration: none;
-  margin-top: 6px;
-  display: inline-block;
-}
-.emptyLink:hover { opacity: 1; }
-
-/* ── New post button (header) ── */
+/* ── Header inner ── */
 .headerInner {
   display: flex;
   align-items: center;
@@ -687,15 +684,110 @@
   font-size: 14px;
   text-decoration: none;
   transition: opacity 0.18s, transform 0.18s;
+  white-space: nowrap;
 }
 .newPostBtn:hover { opacity: 0.85; transform: translateY(-1px); }
-.newPostBtn svg { font-size: 16px; }
+.newPostBtn svg   { font-size: 16px; }
 
-/* ── Profile card improved ── */
-.profilePicWrap {
+/* ── Empty state ── */
+.emptyState {
+  padding: 48px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--gray-color);
+  font-size: 14px;
+  background: var(--white-color);
+  border: 1px solid var(--border-color);
+  border-radius: 13px;
+}
+.emptyIcon {
+  font-size: 32px;
+  opacity: 0.3;
+  margin-bottom: 8px;
+}
+.emptyLink {
+  font-family: var(--Purno-Semibold), serif;
+  font-size: 13px;
+  color: var(--primary-color);
+  opacity: 0.7;
+  text-decoration: none;
+  margin-top: 8px;
+}
+.emptyLink:hover { opacity: 1; }
+
+/* ── Post thumb ── */
+.postThumb {
   position: relative;
+  width: 58px;
+  height: 58px;
+  border-radius: 10px;
   flex-shrink: 0;
 }
+.postThumbImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  display: block;
+}
+.postThumbFallback {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background: var(--hover-color);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: var(--gray-color);
+  opacity: 0.45;
+}
+.postDot {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--white-color);
+}
+.dotPublish { background: #22c55e; }
+.dotDraft   { background: #f59e0b; }
+
+/* ── Post index ── */
+.postIndex {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: var(--hover-color);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--Purno-Semibold), serif;
+  font-size: 11px;
+  color: var(--gray-color);
+  flex-shrink: 0;
+}
+
+/* ── Post arrow ── */
+.postArrow {
+  font-size: 16px;
+  color: var(--gray-color);
+  opacity: 0.25;
+  transition: opacity 0.15s, transform 0.15s;
+}
+.postItem:hover .postArrow {
+  opacity: 0.7;
+  transform: translateX(3px);
+}
+
+/* ── Profile pic wrap ── */
+.profilePicWrap { position: relative; flex-shrink: 0; }
 .profileOnline {
   position: absolute;
   bottom: 2px;
@@ -706,9 +798,9 @@
   background: #22c55e;
   border: 2px solid var(--white-color);
 }
-.profileInfo { flex: 1; }
+.profileInfo { flex: 1; min-width: 0; }
 
-/* ── Card title row (icon + title) ── */
+/* ── Card title row ── */
 .cardTitleRow {
   display: flex;
   align-items: center;
@@ -721,17 +813,21 @@
   opacity: 0.5;
 }
 
-/* ── Top post banner ── */
+/* ── Top post ── */
 .topPostBanner {
   width: 100%;
   height: 90px;
   object-fit: cover;
   border-radius: 8px;
   border: 1px solid var(--border-color);
-  margin-bottom: 10px;
+  margin-bottom: 4px;
 }
-
-/* ── Top post likes icon ── */
+.topPostMeta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
 .topPostLikes {
   display: flex;
   align-items: center;
@@ -741,3 +837,13 @@
   color: #e11d48;
 }
 .topPostLikes svg { font-size: 13px; }
+
+/* ── Stat card color variants ── */
+.cardBlue  .statIcon    { background: #eff6ff; border-color: #bfdbfe; color: #3b82f6; }
+.cardBlue  .statBarFill { background: #3b82f6; }
+.cardGreen .statIcon    { background: #f0fdf4; border-color: #bbf7d0; color: #16a34a; }
+.cardGreen .statBarFill { background: #16a34a; }
+.cardAmber .statIcon    { background: #fffbeb; border-color: #fde68a; color: #d97706; }
+.cardAmber .statBarFill { background: #d97706; }
+.cardRose  .statIcon    { background: #fff1f2; border-color: #fecdd3; color: #e11d48; }
+.cardRose  .statBarFill { background: #e11d48; }
